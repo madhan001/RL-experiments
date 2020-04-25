@@ -29,8 +29,8 @@ for i in range(episodes):
     done = False
 
     while not done:
-
-        env.render()
+        if i % 20 == 0:
+            env.render()
 
         if np.random.random() > epsilon:
             # Get action from Q table
@@ -42,7 +42,7 @@ for i in range(episodes):
         print(action)
 
         state_new, reward, done, _ = env.step(action)
-        print(reward)
+        #print(reward)
         state_new_disc = ((state - env.observation_space.low) * np.array([10, 100])).round(0).astype(int)
 
         if not done:
